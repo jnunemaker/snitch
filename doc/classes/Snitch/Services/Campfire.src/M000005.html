@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>connection (Snitch::Services::Campfire)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/snitch/services/campfire.rb, line 11</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connection</span>(<span class="ruby-identifier">force</span>=<span class="ruby-keyword kw">false</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@campfire</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">force</span>
+          <span class="ruby-identifier">connection</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Tinder</span><span class="ruby-operator">::</span><span class="ruby-constant">Campfire</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">subdomain</span>)
+          <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">login</span>(<span class="ruby-identifier">login</span>, <span class="ruby-identifier">password</span>)
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">ServiceLoginError</span>, <span class="ruby-value str">&quot;Login to Campfire failed&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">logged_in?</span>
+          <span class="ruby-ivar">@campfire</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">find_or_create_room_by_name</span>(<span class="ruby-identifier">room</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-ivar">@campfire</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

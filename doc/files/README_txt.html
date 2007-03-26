@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README.txt</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README.txt</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README.txt
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Mar 25 15:49:17 -0400 2007</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Snitch</h1>
+<p>
+Snitch is an subversion post-commit service integration helper. I just made
+that up. Subversion has a post-commit hook which is executed each time you
+commit a change to a repository. Snitch makes it really easy to hook into
+the post-commit and send the commit message along with the files changed to
+various services on the web.
+</p>
+<p>
+Currently, snitch works with campfire and twitter. I&#8216;ll be adding in
+SMS, email, some day but feel free to do it yourself and send me a patch.
+</p>
+<h2>Installation:</h2>
+<p>
+NOTE: the twitter gem will not work with a 0.5+ version of hpricot at this
+time due to a xml parsing bug
+</p>
+<ol>
+<li>sudo gem install hpricot &#8212;source <a
+href="http://code.whytheluckystiff.net">code.whytheluckystiff.net</a> -v
+0.4.86
+
+</li>
+<li>sudo gem install twitter tinder snitch
+
+</li>
+<li>Create a configuration file (default is /home/deploy/.snitch) that looks
+like the following (be sure to fill in all the values). Be sure that none
+of the tabs from below get stay in the config file. It gets parse by yaml
+so formatting is important.
+
+<pre>
+     # SNITCH START
+     # what is the location of svnlook (you can find this on *nix boxes by typing `which svnlook`)
+     svnlook: /usr/bin/svnlook
+
+     # what services would you like to send commit messages to?
+     services:
+</pre>
+</li>
+<li>Create or edit the post-commit file inside your repository to look like the
+following. Be sure to edit the CONFIG_FILE variable to wherever you created
+your config file in step 3.
+
+<pre>
+     #!/bin/sh
+     REPOS=&quot;$1&quot;
+     REV=&quot;$2&quot;
+     CONFIG_FILE=&quot;/home/deploy/.snitch&quot;
+
+     snitch $REPOS $REV $CONFIG_FILE 2&gt; /tmp/snitch
+</pre>
+</li>
+</ol>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

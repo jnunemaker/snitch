@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+%w[rubygems snitch].each { |x| require x }
+Snitch::Base.new(ARGV[0], ARGV[1], ARGV[2]).tattle

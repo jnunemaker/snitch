@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Snitch</title>
+	<link rel="stylesheet" href="css/common.css" type="text/css" />
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="header">
+		<h1>Snitch</h1>
+		<p>Drop dead easy subversion commit notifications.</p>
+		
+		<ul id="nav">
+			<li><a href="snitch/">Docs</a></li>
+			<li><a href="http://rubyforge.org/projects/snitch/">Rubyforge Page</a></li>
+		</ul>
+	</div>
+	
+	<div id="content">
+		<p>Snitch is an subversion post-commit service integration helper. I just made that up. Subversion has a post-commit hook which is executed each time you commit a change to a repository. Snitch makes it really easy to hook into the post-commit and send the commit message along with the files changed to various services on the web. </p>
+
+		<p>Currently, snitch works with <a href="http://campfirenow.com">campfire</a> and <a href="http://twitter.com">twitter</a>. I'll be adding in SMS, email, some day but feel free to do it yourself and send me a patch.</p>
+		
+		<h2>Screenshots</h2>
+		<h3>Campfire</h3>
+		<p><img src="images/campfire.gif" alt="Campfire Snitch Screenshot" /></p>
+		<h3>Twitter</h3>
+		<p><img src="images/twitter.gif" alt="Twitter Snitch Screenshot" /></p>
+		
+		<h2>Installation</h2>
+
+		<p><strong>NOTE:</strong> the twitter gem will not work with a 0.5+ version of hpricot at this time due to a xml parsing bug</p>
+
+		<ol>
+			<li>sudo gem install hpricot --source http://code.whytheluckystiff.net -v 0.4.86</li>
+			<li>sudo gem install twitter tinder snitch</li>
+			<li>
+				<p>Create a configuration file (default is /home/deploy/.snitch) that looks like the following (be sure to fill in all the values). Be sure that none of the tabs from below get stay in the config file. It gets parse by yaml so formatting is important.</p>
+
+		<pre><code># what is the location of svnlook 
+# you can find this on *nix boxes by typing: which svnlook
+svnlook: /usr/bin/svnlook
+
+# what services would you like to send commit messages to?
+services:
+  :campfire:
+    :subdomain: 
+    :login: 
+    :password: 
+    :room: Development
+  :twitter:
+    :login: 
+    :password: </code></pre>
+			</li>
+			<li>
+				<p>Create or edit the post-commit file inside your repository to look like the following. Be sure to edit the CONFIG_FILE variable to wherever you created your config file in step 3.</p>
+
+		<pre><code>#!/bin/sh
+REPOS="$1"
+REV="$2"
+CONFIG_FILE="/home/deploy/.snitch"
+
+snitch $REPOS $REV $CONFIG_FILE 2> /tmp/snitch</code></pre>
+			</li>
+		</ol>
+	</div>
+
+	<div id="footer">
+		<p>Created by <a href="http://addictedtonew.com/about/">John Nunemaker</a> (with ideas from <a href="http://90percentgravity.com">Bill Harle</a> and <a href="http://grundyhome.com">Chas Grundy</a>)</a></p>
+	</div>
+
+</div>
+
+
+
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	_uacct = "UA-85301-8";
+	urchinTracker();
+</script>
+
+<script type="text/javascript" src="http://include.reinvigorate.net/re_.js"></script>
+<script type="text/javascript">re_("f96n8-kggt7d443a");</script>
+
+<!-- 103bees.com 'bee' code v1.11 - please do not make any changes! -->
+<script type="text/javascript" src="http://103bees.com/bees/?bee=3672&amp;fid=5537"></script>
+<!-- 103bees.com 'bee' code -->
+</body>
+</html>

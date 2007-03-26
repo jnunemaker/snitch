@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Snitch::Base</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Snitch::Base</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/snitch/base_rb.html">
+                lib/snitch/base.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000018">commit_message</a>&nbsp;&nbsp;
+      <a href="#M000017">new</a>&nbsp;&nbsp;
+      <a href="#M000020">tattle</a>&nbsp;&nbsp;
+      <a href="#M000019">use</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">config</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">services</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="Base.src/M000017.html" target="Code" class="method-signature"
+            onclick="popupCode('Base.src/M000017.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(repository, revision, config_file='/home/deploy/.snitch')</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a <a href="Base.html#M000017">new</a> instance of snitch from a
+repository path and a revision.
+</p>
+<pre>
+  Snitch::Base.new('/var/www/apps/myapp/repos', 102)
+</pre>
+<p>
+You must have a config file in order for this to work. You can optionally
+pass in the path to the config file. The default config_file is
+/home/deploy/.snitch
+</p>
+<pre>
+  Snitch::Base.new('/var/www/apps/myapp/repos', 102, '/some/other/path/to/config')
+</pre>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="Base.src/M000018.html" target="Code" class="method-signature"
+            onclick="popupCode('Base.src/M000018.html');return false;">
+          <span class="method-name">commit_message</span><span class="method-args">(which=:long)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Obtains the commit message from the svnlook class. Takes either
+<tt>:long</tt> or <tt>:short</tt> as optional parameter.
+</p>
+<pre>
+  * &lt;tt&gt;:long&lt;/tt&gt; is the full commit message along with a list of all changed files.
+  * &lt;tt&gt;:short&lt;/tt&gt; is a truncated version of the commit message that is less than 140 characters for twitter.
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="Base.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('Base.src/M000020.html');return false;">
+          <span class="method-name">tattle</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sends the commit message to all the added services. The following code
+would <a href="Base.html#M000020">tattle</a> the commit message to twitter.
+</p>
+<pre>
+  snitch = Snitch::Base.new('/var/www/apps/myapp/repos', 102)
+  snitch.use(:twitter, {:login =&gt; 'jnunemaker', :password =&gt; 'secret'})
+  snitch.tattle
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="Base.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('Base.src/M000019.html');return false;">
+          <span class="method-name">use</span><span class="method-args">(s, attrs)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds a service to the services array from a string or symbol of the service
+name and a hash of attributes.
+</p>
+<pre>
+  snitch = Snitch::Base.new('/var/www/apps/myapp/repos', 102)
+  snitch.use(:twitter, {:login =&gt; 'jnunemaker', :password =&gt; 'secret'})
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
