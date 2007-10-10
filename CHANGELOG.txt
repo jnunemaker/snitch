@@ -1,5 +1,6 @@
 0.1.2 - 10/10/2007
 			* corrected dependencies
+			* TODO: make generator for config and post-commit files, allow optional passing of project name to snitch
 			
 0.1.1 - 3/25/2007
  			* added documentation; the first release didn't have hardly any
