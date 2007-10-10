@@ -1,5 +1,8 @@
+0.1.2 - 10/10/2007
+			* corrected dependencies
+			
 0.1.1 - 3/25/2007
- * added documentation; the first release didn't have hardly any
+ 			* added documentation; the first release didn't have hardly any
 
 0.1.0 - 3/25/2007
- * initial release of snitch
+ 			* initial release of snitch

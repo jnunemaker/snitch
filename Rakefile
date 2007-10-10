@@ -49,7 +49,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   
   # == Optional
   #p.changes        - A description of the release's latest changes.
-  p.extra_deps << %w[ twitter tinder activesupport ]
+  p.extra_deps = [['twitter', '0.2.0'], ['tinder', '0.1.4'], ['activesupport', '1.4.2']]
   #p.spec_extras    - A hash of extra values to set in the gemspec.
 end
 
