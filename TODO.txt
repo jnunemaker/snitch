@@ -1,0 +1,1 @@
+* make generator for config and post-commit files, allow optional passing of project name to snitch

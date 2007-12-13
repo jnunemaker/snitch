@@ -39,6 +39,18 @@ services:
   :twitter:
     :login: 
     :password: 
+  :email:
+   # You mail server settings:
+    :host:
+    :server: localhost
+    :port: 25
+   # Your login creds:
+    :login:
+    :password:
+    :method: :login
+   # Our email addresses:
+    :from: Snitch <root@localhost>
+    :to:
 EOF
         File.open(config_file_path, 'w') { |f| f.write snitch_config_tpl } unless File.exists?(config_file_path)
       end

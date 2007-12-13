@@ -26,10 +26,12 @@ module Snitch
       look(:author).chop
     end
     
-    # Returns a best guess of the projects name. Assumes that most will be /some/path/to/cabin/repos/.
-    # Using the aforementioned path, this would return cabin as the project name.
+    # Returns a best guess of the projects name. Assumes that most will be 
+    # /some/path/to/cabin/repos/ or /some/path/to/cabin. Will grab the last 
+    # two folders in the path and remove any that are equal to "repos".
     def project
-      @project ||= repository.split('/')[-2]
+      # @project ||= repository.split('/')[-2]
+      @project ||= repository.split('/')[-2, 2].detect { |a| a != 'repos' }
     end
     
     # Returns the message entered with the committed revision
