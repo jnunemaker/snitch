@@ -20,6 +20,6 @@ module Snitch
     def author; @commit.author.to_s end
     def project; @repository.description end
     def message; " - #{@commit.message}" end
-    def affected; @affected ||= @commit.diffs.map(&:b_path).join("\n - ") end
+    def affected; @affected ||= ' - ' + @commit.diffs.map(&:b_path).join("\n - ") end
   end
 end
