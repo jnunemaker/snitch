@@ -8,7 +8,7 @@ module Snitch
   #
   #   svnlook = Snitch::SvnLook.new('/var/www/apps/yourapp/repos/', 101, '/usr/local/bin/svnlook')
   class SvnLook
-    
+    include Message
     LOG_PREPEND = '\n-{2}'
     
     attr_reader :repository, :revision
@@ -43,19 +43,7 @@ module Snitch
     def affected
       @affected ||= changed.inject('') { |str, line| str << " - #{line}"; str }
     end
-    
-    # Outputs the SvnLook in a pretty format for pasting into campfire
-    def to_s(which=:long)
-      case which.to_s
-      when 'long'
-        "[#{project}] Revision #{revision} Committed by #{author}:\n#{message}\nChanged Files:\n#{affected}"
-      when 'short'
-        str = "[#{project}] Revision #{revision} Committed by #{author}:"        
-        str += message.size > 137 ? message[0, (140 - str.size)] + '...' : message
-        str.gsub("\n", ' ')
-      end
-    end
-    
+        
     private
       # runs an svn look command
       def look(method)

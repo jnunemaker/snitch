@@ -2,6 +2,7 @@ require 'test/unit'
 require File.dirname(__FILE__) + '/../lib/snitch.rb'
 require 'mocha'
 require 'stubba'
+require 'redgreen'
 
 class << Test::Unit::TestCase
   def test(name, &block)
@@ -17,5 +18,5 @@ class << Test::Unit::TestCase
   end
 end
 
-
+Snitch::Config.config_file_path = File.expand_path(File.dirname(__FILE__) + '/snitch_config')
 CONFIG = Snitch::Config::load

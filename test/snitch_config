@@ -1,0 +1,25 @@
+# what is the location of svnlook (you can find this on *nix boxes by typing `which svnlook`)
+svnlook: /opt/local/bin/svnlook
+
+# what services would you like to send commit messages to?
+services:
+  :campfire:
+    :subdomain: 
+    :login: 
+    :password: 
+    :room: Development
+  :twitter:
+    :login: 
+    :password: 
+  :email:
+   # You mail server settings:
+    :host:
+    :server: localhost
+    :port: 25
+   # Your login creds:
+    :login:
+    :password:
+    :method: :login
+   # Our email addresses:
+    :from: Snitch <root@localhost>
+    :to:

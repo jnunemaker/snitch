@@ -12,7 +12,7 @@ module Snitch
     def initialize(repository, revision, config_file='/home/deploy/.snitch')
       Config.config_file_path = config_file unless config_file.nil?
       @config                 = Config::load
-      @svnlook_bin            = SvnLook.new(repository, revision, @config[:svnlook])
+      @scm = @config.key?(:git) ? GitCommit.new(repository, revision) : SvnLook.new(repository, revision, @config[:svnlook])
       @services               = []
       @config[:services].each { |s, attrs| use(s, attrs) }
     end
@@ -21,7 +21,7 @@ module Snitch
     #   * <tt>:long</tt> is the full commit message along with a list of all changed files. 
     #   * <tt>:short</tt> is a truncated version of the commit message that is less than 140 characters for twitter.
     def commit_message(which=:long)
-      @svnlook_bin.to_s(which)
+      @scm.to_s(which)
     end
     
     # Adds a service to the services array from a string or symbol of the service name and a hash of attributes.

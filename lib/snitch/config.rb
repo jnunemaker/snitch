@@ -29,6 +29,9 @@ module Snitch
 # what is the location of svnlook (you can find this on *nix boxes by typing `which svnlook`)
 svnlook: /usr/bin/svnlook
 
+# If you want git support, comment out the line above and uncomment this one:
+# git: true
+
 # what services would you like to send commit messages to?
 services:
   :campfire:
