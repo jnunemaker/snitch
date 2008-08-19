@@ -3,10 +3,7 @@ module Snitch
   module Services
     # Allows for using tinder the unnofficial campfire api to paste a commit message into a campfire chatroom.
     class Campfire < Service
-      
-      # Sets the prefferred commit message length to <tt>:long</tt>
-      self.message_length = :long
-      
+            
       # Logs into campfire and enters the room in the config file.
       def connection(force=false)
         if @campfire.nil? || force

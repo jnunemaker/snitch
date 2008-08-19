@@ -10,9 +10,13 @@ class GitCommitTest < Test::Unit::TestCase
   test 'should have a description' do
     assert_match /^Unnamed repository/, @gitcommit.project
   end
-  
+
+  test 'should have diffs' do
+    assert @gitcommit.diffs
+  end
+
   test 'should have a message' do
-    assert_equal 'test', @gitcommit.message
+    assert_equal ' - test', @gitcommit.message
   end
   
   test 'should have a commit' do

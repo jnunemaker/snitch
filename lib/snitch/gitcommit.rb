@@ -31,6 +31,10 @@ module Snitch
     def message
       " - #{@commit.message}"
     end
+    
+    def diffs
+      @diffs ||= @commit.diffs.map(&:diff).join("\n\n")
+    end
 
     def affected
       @affected ||= ' - ' + @commit.diffs.map(&:b_path).join("\n - ")

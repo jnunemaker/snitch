@@ -38,10 +38,22 @@ module Snitch
     #   snitch.use(:twitter, {:login => 'jnunemaker', :password => 'secret'})
     #   snitch.tattle
     def tattle
-      long  = commit_message(:long)
+      superlong = commit_message(:superlong)
+      long = commit_message(:long)
       short = commit_message(:short)
       @services.each do |s|
-        s.tattle(s.class.message_length == :long ? long : short)
+        puts s.message_length.inspect
+        message = 
+          case s.message_length.to_s
+            when 'superlong'
+              superlong
+            when 'long'
+              long
+            else
+              short
+          end
+          
+        s.tattle(message)
       end
     end
   end

@@ -5,9 +5,6 @@ require 'net/smtp'
 module Snitch
   module Services
     class Email < Service
-      
-      # Sets the prefferred commit message length to <tt>:long</tt>
-      self.message_length = :long
 
       def initialize(*args)
         super(*args)

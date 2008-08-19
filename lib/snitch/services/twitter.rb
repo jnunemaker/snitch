@@ -4,8 +4,9 @@ module Snitch
     # Allows for using the twitter api to post a commit message update.
     class Twitter < Service
       
-      # Sets the prefferred commit message length to <tt>:short</tt>
-      self.message_length = :short
+      def initialize(attributes = {})
+        super({ :message_length => :short }.merge(attributes))
+      end
       
       # Logs into twitter.
       def connection(force=false)

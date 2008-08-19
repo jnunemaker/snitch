@@ -5,12 +5,6 @@ module Snitch
     
     class << self
       
-      # Set up the class instance attribute for the commit message length
-      attr_accessor :message_length      
-      
-      # Don't allow changing the commit message from outside the class
-      protected :message_length=
-      
       # Handy for creating a new instance of a service from the config file. Simply pass in the service name and the attributes for the service and you get a new instance of the service.
       #
       #   Snitch::Service.new_from_name(:twitter, {:login => 'jnunemaker', :password => 'secret'})
