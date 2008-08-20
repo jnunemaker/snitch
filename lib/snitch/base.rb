@@ -42,7 +42,6 @@ module Snitch
       long = commit_message(:long)
       short = commit_message(:short)
       @services.each do |s|
-        puts s.message_length.inspect
         message = 
           case s.message_length.to_s
             when 'superlong'
