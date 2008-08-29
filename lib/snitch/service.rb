@@ -15,8 +15,9 @@ class Snitch
       end
     end
     
-    def initialize(attributes = {})
-      @attributes = attributes
+    def initialize(attributes)
+      defaults = { :message_length => :long }
+      @attributes = defaults.merge(attributes || {})
     end
     
     # Uses method missing to return the value of a key in the attributes hash.

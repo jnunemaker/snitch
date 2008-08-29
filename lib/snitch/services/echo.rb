@@ -1,8 +1,8 @@
 class Snitch
   module Services
     class Echo < Service
-      def initialize(*args)
-        super(*args)
+      def initialize(options)
+        super(options)
       end
       
       def tattle(message)
