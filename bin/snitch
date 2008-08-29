@@ -5,19 +5,23 @@ require 'ostruct'
 
 options = OpenStruct.new(
   :verbose => false,
-  :development => false
+  :development => false,
+  :config_file => File.expand_path('~/.snitch')
 )
 
 op = OptionParser.new
 op.on('-h', '--help', "Display this help") { puts op; exit }
 op.on('-v', '--verbose', "Verbose mode") { options.verbose = true }
+op.on('-c', '--config FILE', "Configuration file to use, defaults to ~/.snitch") { |value| options.config_file = value }
 op.on('-d', '--development', "Development mode, runs from a directory") { options.development = true }
 
 op.parse!(ARGV)
+
 require 'rubygems'
+
 if options.development
   $: <<  File.join(File.dirname(__FILE__), '..', 'lib')
 end
 require 'snitch'
 
-Snitch::Base.new(ARGV[0], ARGV[1], ARGV[2]).tattle
+Snitch::Base.new(ARGV[0], ARGV[1], options.config_file).tattle
