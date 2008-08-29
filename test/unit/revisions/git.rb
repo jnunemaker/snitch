@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class GitCommitTest < Test::Unit::TestCase
+class GitTest < Test::Unit::TestCase
   def setup
     # Creates a test git repo locally and makes a test commit to it
     `mkdir ./test-git.git && cd ./test-git.git && git init && touch test && git add test && git commit -m 'Initial git import.'`

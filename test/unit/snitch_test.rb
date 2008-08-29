@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class BaseTest < Test::Unit::TestCase
+class SnitchTest < Test::Unit::TestCase
   def setup
     repo, checkout = create_subversion_repository_and_checkout
     config_file = File.join(File.dirname(File.expand_path(__FILE__)), 'snitch_config')

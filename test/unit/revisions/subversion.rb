@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 # TODO: move this test to remote folder
 
-class SvnlookTest < Test::Unit::TestCase
+class SubersionTest < Test::Unit::TestCase
   def setup
     # Creates a test subversion repo locally and makes a test commit to it
     repo, checkout = create_subversion_repository_and_checkout
