@@ -24,9 +24,6 @@ class Snitch
       # Creates a config file based on a template.
       def create
         snitch_config_tpl = <<EOF
-# what is the location of svnlook (you can find this on *nix boxes by typing `which svnlook`)
-svnlook: /usr/bin/svnlook
-
 # what services would you like to send commit messages to?
 services:
   :campfire:
