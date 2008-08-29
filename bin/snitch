@@ -1,3 +1,23 @@
 #!/usr/bin/env ruby
-%w[rubygems snitch].each { |x| require x }
+
+require 'optparse'
+require 'ostruct'
+
+options = OpenStruct.new(
+  :verbose => false,
+  :development => false
+)
+
+op = OptionParser.new
+op.on('-h', '--help', "Display this help") { puts op; exit }
+op.on('-v', '--verbose', "Verbose mode") { options.verbose = true }
+op.on('-d', '--development', "Development mode, runs from a directory") { options.development = true }
+
+op.parse!(ARGV)
+require 'rubygems'
+if options.development
+  $: <<  File.join(File.dirname(__FILE__), '..', 'lib')
+end
+require 'snitch'
+
 Snitch::Base.new(ARGV[0], ARGV[1], ARGV[2]).tattle
