@@ -24,3 +24,7 @@ def create_subversion_repository_and_checkout
   `svnadmin create test-subversion-repository && svn checkout file://$PWD/test-subversion-repository/ test-subversion-checkout && cd ./test-subversion-checkout && touch test && svn add test && svn commit -m 'Initial subversion import.'`
   [`echo $PWD/test-subversion-repository`.chomp, `echo $PWD/test-subversion-checkout`.chomp]
 end
+
+def current_user
+  ENV['USER']
+end

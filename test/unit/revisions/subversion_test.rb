@@ -15,7 +15,7 @@ class SubversionTest < Test::Unit::TestCase
   
   test 'should be able to build long message' do
     cmt_msg = <<EOF
-[snitch] Revision 1 Committed by #{ENV['USER']}:
+[snitch] Revision 1 Committed by #{current_user}:
  - Initial subversion import.
 
 Changed Files:
@@ -24,18 +24,18 @@ EOF
     assert_equal cmt_msg, @revision.to_s(:long)
   end
 
-#   test 'should be able to build short message' do
-#     cmt_msg = "[conductor] Revision 100 Committed by deploy: - Drop additions "
-#     assert_equal cmt_msg, @svnlook.to_s(:short)
-#   end
-#   
-#   test 'should be able to find author' do
-#     assert_equal 'deploy', @svnlook.author
-#   end
+  test 'should be able to build short message' do
+    cmt_msg = "[snitch] Revision 1 Committed by #{current_user}: Initial subversion import. "
+    assert_equal cmt_msg, @revision.to_s(:short)
+  end
+
+  test 'should be able to find author' do
+    assert_equal current_user, @revision.author
+  end
   
-  # test 'should be able to figure out project name' do
-  #   assert_equal 'conductor', @svnlook.project
-  # end
+  test 'should be able to figure out project name' do
+    assert_equal 'snitch', @revision.project
+  end
   
   def teardown
     `rm -rf ./test-subversion-repository`
