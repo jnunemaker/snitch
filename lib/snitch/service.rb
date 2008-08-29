@@ -2,11 +2,8 @@ class Snitch
   class Service
     attr_reader :base, :attributes
     
-    class << self
-      
-      def new_from_name(s, attributes)
-        "Snitch::Services::#{s.to_s.camelize}".constantize.new(attributes)
-      end
+    def self.new_from_name(s, attributes)
+      "Snitch::Services::#{s.to_s.camelize}".constantize.new(attributes)
     end
     
     def initialize(attributes)
