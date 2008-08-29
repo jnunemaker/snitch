@@ -8,9 +8,8 @@ class Snitch
         super({ :message_length => :short }.merge(attributes))
       end
       
-      def connection(force=false)
-        @twitter = ::Twitter::Base.new(login, password) if @twitter.nil? || force
-        @twitter
+      def connection
+        ::Twitter::Base.new(login, password)
       end
       
       def tattle(message)
