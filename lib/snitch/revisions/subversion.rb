@@ -1,13 +1,12 @@
 class Snitch
   module Revisions
-    class Subversion
+    class Subversion < Revision
       include Message
       LOG_PREPEND = '\n-{2}'
     
-      attr_reader :repository, :revision
     
-      def initialize(repository, revision)
-        @repository, @revision, @svnlook = repository, revision
+      def initialize(repository_path, revision)
+        super
         @svnlook = `which svnlook`
       end
     
@@ -22,8 +21,8 @@ class Snitch
       # /some/path/to/cabin/repos/ or /some/path/to/cabin. Will grab the last 
       # two folders in the path and remove any that are equal to "repos".
       def project
-        # @project ||= repository.split('/')[-2]
-        @project ||= repository.split('/')[-2, 2].detect { |a| a != 'repos' }
+        # @project ||= repository_path.split('/')[-2]
+        @project ||= repository_path.split('/')[-2, 2].detect { |a| a != 'repos' }
       end
     
       def message
@@ -37,7 +36,7 @@ class Snitch
       private
 
       def look(method)
-        `#{@svnlook} #{method.to_s} #{repository} -r #{revision}`
+        `#{@svnlook} #{method.to_s} #{repository_path} -r #{revision}`
       end
     end
   end

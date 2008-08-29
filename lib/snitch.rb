@@ -9,6 +9,7 @@ require 'snitch/services/campfire'
 require 'snitch/services/email'
 require 'snitch/services/twitter'
 require 'snitch/message'
+require 'snitch/revision'
 require 'snitch/revisions/subversion'
 require 'snitch/revisions/git'
 require 'snitch/version'
@@ -22,15 +23,7 @@ class Snitch
     config_file = options[:config_file]
     Config.config_file_path = config_file unless config_file.nil?
     @config = Config::load
-    @revision = 
-      case options[:scm] 
-      when :git
-        Revisions::Git.new(repository, revision)
-      when :subversion
-        Revisions::Subversion.new(repository, revision)
-      else
-        raise "Unrecognized scm: #{options[:scm].inspect}"
-      end
+    @revision = Revision.new_from_name(options[:scm], repository, revision)
 
     @services = []
     @config[:services].each { |s, attrs| use(s, attrs) }

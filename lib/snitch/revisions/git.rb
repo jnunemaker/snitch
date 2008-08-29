@@ -1,14 +1,13 @@
 class Snitch
   module Revisions
-    class Git
+    class Git < Revision
       include Message
       gem 'mojombo-grit'
       require 'mojombo-grit'
     
-      attr_reader :repository
-    
-      def initialize(repository, revision = nil)
-        @repository, @revision = Grit::Repo.new(repository), revision
+      def initialize(repository_path, revision = nil)
+        super
+        @repository = Grit::Repo.new(repository_path)
         @commit = revision ? @repository.commit( revision ) : @repository.commits.first
       end
     
