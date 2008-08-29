@@ -9,8 +9,12 @@ class Snitch
         connection.find_or_create_room_by_name(room)
       end
       
+      def default_options
+        super.merge(:paste => true)
+      end
+      
       def tattle(message)
-        connection.paste(message)
+        connection.speak(message, :paste => paste)
       end
     end
   end

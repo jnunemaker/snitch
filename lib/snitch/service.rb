@@ -7,7 +7,7 @@ class Snitch
     end
     
     def initialize(attributes)
-      self.attributes = default_options.merge(attributes || {})
+      self.attributes = default_options.merge(attributes || {}).symbolize_keys
     end
     
     def default_options
@@ -15,10 +15,10 @@ class Snitch
     end
     
     def method_missing(method, *args, &block)
-      if method.to_s =~ /=$/
-        self.attributes[method.to_s.chop] = args[0]
+      if attributes.include?(method)
+        attributes[method]
       else
-        attributes[method.to_s] || attributes[method] || super
+        super
       end
     end
   end
