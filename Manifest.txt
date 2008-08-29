@@ -10,7 +10,6 @@ lib/snitch/base.rb
 lib/snitch/config.rb
 lib/snitch/exceptions.rb
 lib/snitch/patches/hash.rb
-lib/snitch/patches/tinder.rb
 lib/snitch/service.rb
 lib/snitch/services/echo.rb
 lib/snitch/services/campfire.rb
