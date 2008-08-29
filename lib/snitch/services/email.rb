@@ -6,8 +6,8 @@ class Snitch
   module Services
     class Email < Service
 
-      def initialize(*args)
-        super(*args)
+      def initialize(options)
+        super(options)
       end
       
       def tattle(message)

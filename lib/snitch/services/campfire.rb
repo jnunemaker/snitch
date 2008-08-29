@@ -3,7 +3,6 @@ require 'tinder'
 class Snitch
   module Services
     class Campfire < Service
-            
       def connection
         connection = ::Tinder::Campfire.new(subdomain)
         connection.login(login, password)
