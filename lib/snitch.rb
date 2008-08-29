@@ -4,7 +4,6 @@
 
 require 'snitch/base'
 require 'snitch/config'
-require 'snitch/exceptions'
 require 'snitch/patches/hash'
 require 'snitch/service'
 require 'snitch/services/echo'

@@ -8,7 +8,6 @@ bin/snitch
 lib/snitch.rb
 lib/snitch/base.rb
 lib/snitch/config.rb
-lib/snitch/exceptions.rb
 lib/snitch/patches/hash.rb
 lib/snitch/service.rb
 lib/snitch/services/echo.rb

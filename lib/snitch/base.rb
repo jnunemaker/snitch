@@ -1,6 +1,9 @@
 class Snitch
   attr_reader :services, :config
 
+  class ConfigFileLoadError < StandardError; end
+  class ServiceLoginError < StandardError; end
+
   def initialize(repository, revision, options)
     config_file = options[:config_file]
     Config.config_file_path = config_file unless config_file.nil?
