@@ -1,7 +1,7 @@
 =Snitch
-Snitch is an subversion post-commit service integration helper. I just made that up. Subversion has a post-commit hook which is executed each time you commit a change to a repository. Snitch makes it really easy to hook into the post-commit and send the commit message along with the files changed to various services on the web. 
+Snitch is an git/subversion post-commit service integration helper. SCMs typically have a post commit hook which is executed each time you commit a change to a repository. Snitch makes it really easy to hook into the post-commit and send the commit message along with the files changed to various services on the web. 
 
-Currently, snitch works with campfire and twitter. I'll be adding in SMS, email, some day but feel free to do it yourself and send me a patch. 
+Snitch currently works with campfire, twitter and email.
 
 ==Installation:
 
