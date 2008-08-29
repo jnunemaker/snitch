@@ -5,11 +5,7 @@ class EmailTest < Test::Unit::TestCase
     @config = CONFIG[:services][:email]
     @service = Snitch::Services::Email.new(@config)
   end
-  
-  test 'should have attributes' do
-    assert_equal @config, @service.attributes
-  end
-  
+    
   test "should make the email's body the commit message" do
   end
   

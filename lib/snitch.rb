@@ -1,5 +1,7 @@
 %w[uri yaml rubygems active_support].each { |x| require x }
 
+$: << File.join(File.dirname(__FILE__))
+
 require 'snitch/config'
 require 'snitch/service'
 require 'snitch/services/echo'

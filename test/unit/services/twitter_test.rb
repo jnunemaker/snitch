@@ -6,12 +6,8 @@ class TwitterTest < Test::Unit::TestCase
     @service = Snitch::Services::Twitter.new(@config)
   end
   
-  test 'should have attributes' do
-    assert_not_equal({}, @service.attributes)
-  end
-  
   test 'should default the message length to :short' do
-    assert_equal :short, Snitch::Services::Twitter.new.message_length
+    assert_equal :short, Snitch::Services::Twitter.new({}).message_length
   end
 
   test 'should allow overriding of message length' do

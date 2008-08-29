@@ -2,11 +2,13 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class BaseTest < Test::Unit::TestCase
   def setup
-    @snitch = Snitch::Base.new('/Volumes/ndwebgroup-app.railsmachina.com/var/www/apps/conductor/repos', 100)
+    repo, checkout = create_subversion_repository_and_checkout
+    config_file = File.join(File.dirname(File.expand_path(__FILE__)), 'snitch_config')
+    @snitch = Snitch.new(repo, 1, :scm => :subversion, :config_file => config_file)
   end
     
   test 'should add services from config file' do
-    assert_equal 2, @snitch.services.size    
+    assert_equal 3, @snitch.services.size    
   end
   
   # Remote test, uncomment to run
