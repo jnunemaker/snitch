@@ -7,7 +7,6 @@ TODO.txt
 bin/snitch
 lib/snitch.rb
 lib/snitch/config.rb
-lib/snitch/patches/hash.rb
 lib/snitch/service.rb
 lib/snitch/services/echo.rb
 lib/snitch/services/campfire.rb

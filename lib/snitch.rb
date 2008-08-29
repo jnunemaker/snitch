@@ -1,7 +1,6 @@
 %w[uri yaml rubygems active_support].each { |x| require x }
 
 require 'snitch/config'
-require 'snitch/patches/hash'
 require 'snitch/service'
 require 'snitch/services/echo'
 require 'snitch/services/campfire'
