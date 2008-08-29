@@ -5,11 +5,6 @@ require 'net/smtp'
 class Snitch
   module Services
     class Email < Service
-
-      def initialize(options)
-        super(options)
-      end
-      
       def default_options
         super.merge(:message_length => :superlong)
       end

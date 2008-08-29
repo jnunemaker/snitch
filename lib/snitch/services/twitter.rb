@@ -3,10 +3,6 @@ require 'twitter'
 class Snitch
   module Services
     class Twitter < Service
-      def initialize(options = {})
-        super
-      end
-
       def default_options
         super.merge(:message_length => :short)
       end

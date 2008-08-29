@@ -1,6 +1,6 @@
 class Snitch
   class Service
-    attr_accessor :base, :attributes
+    attr_accessor :attributes
     
     def self.new_from_name(s, attributes)
       "Snitch::Services::#{s.to_s.camelize}".constantize.new(attributes)
