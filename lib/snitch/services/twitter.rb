@@ -1,5 +1,6 @@
 require 'twitter'
-module Snitch
+
+class Snitch
   module Services
     # Allows for using the twitter api to post a commit message update.
     class Twitter < Service

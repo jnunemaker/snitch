@@ -1,4 +1,4 @@
-module Snitch
+class Snitch
   # This is a wrapper around the svnlook command line utility. I saw someone else using it so I did. I haven't looked around for other options but I will as I'm not a fan of relying on command line stuff. 
   #
   #   svnlook = Snitch::SvnLook.new('/var/www/apps/yourapp/repos/', 101)

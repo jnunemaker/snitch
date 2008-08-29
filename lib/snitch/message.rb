@@ -1,4 +1,4 @@
-module Snitch
+class Snitch
   # This is a module for outputting snitch messages
   # it is included in the SvnLook and GitCommit classes.
   # It requires the class to support the following methods:

@@ -35,4 +35,4 @@ unless repository_path && revision
   exit(1)
 end
 
-Snitch::Base.new(repository_path, revision, options).tattle
+Snitch.new(repository_path, revision, options).tattle

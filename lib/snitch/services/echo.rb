@@ -1,4 +1,4 @@
-module Snitch
+class Snitch
   module Services
     class Echo < Service
       def initialize(*args)

@@ -1,5 +1,6 @@
 require 'tinder'
-module Snitch
+
+class Snitch
   module Services
     # Allows for using tinder the unnofficial campfire api to paste a commit message into a campfire chatroom.
     class Campfire < Service

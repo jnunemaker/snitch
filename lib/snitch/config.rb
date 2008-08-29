@@ -1,4 +1,4 @@
-module Snitch
+class Snitch
   class Config
     @@snitch_config_path = '/home/deploy/.snitch'
     

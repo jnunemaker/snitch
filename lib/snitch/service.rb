@@ -1,4 +1,4 @@
-module Snitch
+class Snitch
   # Service is the base class for all services. All services should inherit from this class.
   class Service
     attr_reader :base, :attributes

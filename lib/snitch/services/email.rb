@@ -2,7 +2,7 @@ require 'snitch/service'
 require 'tmail'
 require 'net/smtp'
 
-module Snitch
+class Snitch
   module Services
     class Email < Service
 
