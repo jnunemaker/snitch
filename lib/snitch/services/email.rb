@@ -10,7 +10,6 @@ class Snitch
         super(*args)
       end
       
-      # Sends the email
       def tattle(message)
         send_email(create_email(message))
       end

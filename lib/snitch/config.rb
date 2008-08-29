@@ -3,12 +3,10 @@ class Snitch
     @@snitch_config_path = '/home/deploy/.snitch'
     
     class << self
-      # Returns the path to the config file.
       def config_file_path
         @@snitch_config_path
       end
       
-      # Allows you to change the config file path. 
       def config_file_path=(new_path)
         @@snitch_config_path = new_path
       end
