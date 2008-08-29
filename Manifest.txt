@@ -16,7 +16,8 @@ lib/snitch/services/echo.rb
 lib/snitch/services/campfire.rb
 lib/snitch/services/email.rb
 lib/snitch/services/twitter.rb
-lib/snitch/svnlook.rb
+lib/snitch/revisions/subversion.rb
+lib/snitch/revisions/git.rb
 lib/snitch/version.rb
 setup.rb
 test/test_helper.rb
