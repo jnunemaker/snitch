@@ -6,7 +6,7 @@ class SubersionTest < Test::Unit::TestCase
   def setup
     # Creates a test subversion repo locally and makes a test commit to it
     repo, checkout = create_subversion_repository_and_checkout
-    @revision = Snitch::Revisions::Subversion.new(repo, 1, '/usr/local/bin/svnlook')
+    @revision = Snitch::Revisions::Subversion.new(repo, 1)
   end
   
   test 'should be able to load repository' do

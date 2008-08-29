@@ -27,7 +27,7 @@ class Snitch
       when :git
         Revisions::Git.new(repository, revision)
       when :subversion
-        Revisions::Subversion.new(repository, revision, @config[:svnlook])
+        Revisions::Subversion.new(repository, revision)
       else
         raise "Unrecognized scm: #{options[:scm].inspect}"
       end

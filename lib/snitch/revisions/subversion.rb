@@ -6,9 +6,9 @@ class Snitch
     
       attr_reader :repository, :revision
     
-      def initialize(repository, revision, svn_look_path=nil)
-        @repository, @revision, @svnlook = repository, revision, svn_look_path
-        @svnlook = svn_look_path || '/usr/bin/svnlook'
+      def initialize(repository, revision)
+        @repository, @revision, @svnlook = repository, revision
+        @svnlook = `which svnlook`
       end
     
       # Creates a few helper methods for looking at the subversion commit
