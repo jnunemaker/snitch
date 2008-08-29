@@ -15,7 +15,7 @@ class Snitch
       %w[changed date diff log].each { |m| define_method(m) { look m } }
     
       def author
-        look(:author).chop
+        look(:author).chomp
       end
     
       # Returns a best guess of the projects name. Assumes that most will be 
