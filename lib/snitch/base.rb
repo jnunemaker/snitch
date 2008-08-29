@@ -9,7 +9,7 @@ module Snitch
       config_file = options[:config_file]
       Config.config_file_path = config_file unless config_file.nil?
       @config                 = Config::load
-      @scm = 
+      @revision = 
         case options[:scm] 
         when :git
           GitCommit.new(repository, revision)
@@ -25,7 +25,7 @@ module Snitch
     #   * <tt>:long</tt> is the full commit message along with a list of all changed files. 
     #   * <tt>:short</tt> is a truncated version of the commit message that is less than 140 characters for twitter.
     def commit_message(which=:long)
-      @scm.to_s(which)
+      @revision.to_s(which)
     end
     
     # Adds a service to the services array from a string or symbol of the service name and a hash of attributes.
