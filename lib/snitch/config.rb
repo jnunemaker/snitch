@@ -14,7 +14,7 @@ class Snitch
       # Loads the config file. If the file does not exist, it creates it and fills in a blank template that only needs settings.
       def load
         begin
-          config = YAML::load(open(@@snitch_config_path)).symbolize_keys!
+          config = YAML::load(open(@@snitch_config_path)).symbolize_keys
         rescue
           create
           raise ConfigFileLoadError, "The config file was missing or could not be loaded because of a parse error. It should be here: #{@@snitch_config_path}. Fill it out and try again."
