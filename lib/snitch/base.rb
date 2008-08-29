@@ -4,12 +4,13 @@ module Snitch
     
     # Creates a new instance of snitch from a repository path and a revision.
     #
-    #   Snitch::Base.new('/var/www/apps/myapp/repos', 102)
+    #   Snitch::Base.new('/var/www/apps/myapp/repos', 102, :config_file => '/home/user/.snitch')
     #
     # You must have a config file in order for this to work. You can optionally pass in the path to the config file. The default config_file is /home/deploy/.snitch
     #
-    #   Snitch::Base.new('/var/www/apps/myapp/repos', 102, '/some/other/path/to/config')
-    def initialize(repository, revision, config_file)
+    #   Snitch::Base.new('/var/www/apps/myapp/repos', 102, :config_file => '/some/other/path/to/config')
+    def initialize(repository, revision, options)
+      config_file = options[:config_file]
       Config.config_file_path = config_file unless config_file.nil?
       @config                 = Config::load
       @scm = @config.key?(:git) ? GitCommit.new(repository, revision) : SvnLook.new(repository, revision, @config[:svnlook])
