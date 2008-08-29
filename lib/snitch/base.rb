@@ -19,6 +19,9 @@ module Snitch
         
       @services               = []
       @config[:services].each { |s, attrs| use(s, attrs) }
+      if @services.empty?
+        use('echo', :message_length => :long)
+      end
     end
     
     # Obtains the commit message from the svnlook class. Takes either <tt>:long</tt> or <tt>:short</tt> as optional parameter. 
@@ -32,7 +35,7 @@ module Snitch
     #
     #   snitch = Snitch::Base.new('/var/www/apps/myapp/repos', 102)
     #   snitch.use(:twitter, {:login => 'jnunemaker', :password => 'secret'})
-    def use(s, attrs)
+    def use(s, attrs = {})
       @services << Service.new_from_name(s, attrs)
     end
     
