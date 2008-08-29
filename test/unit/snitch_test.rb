@@ -17,4 +17,10 @@ class SnitchTest < Test::Unit::TestCase
   #   puts 'Be sure to check the live services in the config file'
   #   @snitch.tattle
   # end
+  
+  def teardown
+    `rm -rf ./test-subversion-repository`
+    `rm -rf ./test-subversion-checkout`
+  end
+
 end
