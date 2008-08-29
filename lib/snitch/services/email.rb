@@ -10,6 +10,10 @@ class Snitch
         super(options)
       end
       
+      def default_options
+        super.merge(:message_length => :superlong)
+      end
+      
       def tattle(message)
         send_email(create_email(message))
       end
