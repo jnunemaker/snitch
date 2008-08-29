@@ -25,7 +25,7 @@ class Snitch
       end
     
       def message
-        " - #{@commit.message}"
+        @commit.message
       end
     
       def diffs

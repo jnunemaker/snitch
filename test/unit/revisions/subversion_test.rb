@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/../../test_helper'
 
 # TODO: move this test to remote folder
 
@@ -13,19 +13,19 @@ class SubersionTest < Test::Unit::TestCase
     @revision
   end
   
-#   test 'should be able to build long message' do
-#     cmt_msg = <<EOF
-# [conductor] Revision 100 Committed by deploy:
-#  - Drop additions
-# 
-# Changed Files:
-#  - U   trunk/app/controllers/conductor_controller.rb
-#  - A   trunk/app/drops/page_drop.rb
-#  - U   trunk/app/drops/site_drop.rb
-#  - U   trunk/app/models/page.rb
-# EOF
-#     assert_equal cmt_msg, @svnlook.to_s(:long)
-#   end
+  test 'should be able to build long message' do
+    cmt_msg = <<EOF
+[conductor] Revision 100 Committed by deploy:
+ - Drop additions
+
+Changed Files:
+ - U   trunk/app/controllers/conductor_controller.rb
+ - A   trunk/app/drops/page_drop.rb
+ - U   trunk/app/drops/site_drop.rb
+ - U   trunk/app/models/page.rb
+EOF
+    assert_equal cmt_msg, @svnlook.to_s(:long)
+  end
 #   
 #   test 'should be able to build short message' do
 #     cmt_msg = "[conductor] Revision 100 Committed by deploy: - Drop additions "

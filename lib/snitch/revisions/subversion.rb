@@ -26,7 +26,7 @@ class Snitch
       end
     
       def message
-        @message ||= log.split(%r{#{LOG_PREPEND}}).inject('') { |str, log_item| str << " - #{log_item.gsub(/-/, '').capitalize}"; str }
+        @message ||= log.split(%r{#{LOG_PREPEND}}).inject('') { |str, log_item| str << log_item.gsub(/-/, '').capitalize; str }
       end
     
       def affected
