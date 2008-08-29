@@ -11,6 +11,8 @@ class Snitch
         GitCommit.new(repository, revision)
       when :subversion
         SvnLook.new(repository, revision, @config[:svnlook])
+      else
+        raise "Unrecognized scm: #{options[:scm].inspect}"
       end
       
     @services               = []
