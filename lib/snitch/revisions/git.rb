@@ -1,14 +1,16 @@
 class Snitch
   module Revisions
     class Git < Revision
+      attr_accessor :repository
+      
       include Message
       gem 'mojombo-grit'
       require 'mojombo-grit'
     
       def initialize(repository_path, revision = nil)
         super
-        @repository = Grit::Repo.new(repository_path)
-        @commit = revision ? @repository.commit( revision ) : @repository.commits.first
+        self.repository = Grit::Repo.new(repository_path)
+        @commit = revision ? repository.commit( revision ) : repository.commits.first
       end
     
       # Only show the first 7 digits of the yucky SHA hash
@@ -21,7 +23,7 @@ class Snitch
       end
     
       def project
-        @repository.description
+        repository.description
       end
     
       def message

@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../test_helper'
 
 # TODO: move this test to remote folder
 
-class SubersionTest < Test::Unit::TestCase
+class SubversionTest < Test::Unit::TestCase
   def setup
     # Creates a test subversion repo locally and makes a test commit to it
     repo, checkout = create_subversion_repository_and_checkout
@@ -15,18 +15,15 @@ class SubersionTest < Test::Unit::TestCase
   
   test 'should be able to build long message' do
     cmt_msg = <<EOF
-[conductor] Revision 100 Committed by deploy:
- - Drop additions
+[snitch] Revision 1 Committed by #{ENV['USER']}:
+ - Initial subversion import.
 
 Changed Files:
- - U   trunk/app/controllers/conductor_controller.rb
- - A   trunk/app/drops/page_drop.rb
- - U   trunk/app/drops/site_drop.rb
- - U   trunk/app/models/page.rb
+ - A   test
 EOF
-    assert_equal cmt_msg, @svnlook.to_s(:long)
+    assert_equal cmt_msg, @revision.to_s(:long)
   end
-#   
+
 #   test 'should be able to build short message' do
 #     cmt_msg = "[conductor] Revision 100 Committed by deploy: - Drop additions "
 #     assert_equal cmt_msg, @svnlook.to_s(:short)

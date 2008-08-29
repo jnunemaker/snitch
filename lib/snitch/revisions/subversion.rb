@@ -7,7 +7,7 @@ class Snitch
     
       def initialize(repository_path, revision)
         super
-        @svnlook = `which svnlook`
+        @svnlook = `which svnlook`.chomp
       end
     
       # Creates a few helper methods for looking at the subversion commit

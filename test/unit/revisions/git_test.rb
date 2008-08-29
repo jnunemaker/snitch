@@ -8,7 +8,7 @@ class GitTest < Test::Unit::TestCase
   end
   
   test 'should have a description' do
-    assert_match /^Unnamed repository/, @gitcommit.project
+    assert_match(/^Unnamed repository/, @gitcommit.project)
   end
 
   test 'should have diffs' do
@@ -16,7 +16,7 @@ class GitTest < Test::Unit::TestCase
   end
 
   test 'should have a message' do
-    assert_equal ' - Initial git import.', @gitcommit.message
+    assert_equal 'Initial git import.', @gitcommit.message
   end
   
   test 'should have a commit' do
