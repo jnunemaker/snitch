@@ -4,8 +4,6 @@ class Snitch
       attr_accessor :repository
       
       include Message
-      gem 'mojombo-grit'
-      require 'mojombo-grit'
     
       def initialize(repository_path, revision = nil)
         super

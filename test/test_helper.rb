@@ -17,7 +17,7 @@ class << Test::Unit::TestCase
   end
 end
 
-Snitch::Config.config_file_path = File.expand_path(File.dirname(__FILE__) + '/snitch_config')
+Snitch::Config.config_file_path = File.expand_path(File.dirname(__FILE__) + '/unit/snitch_config')
 CONFIG = Snitch::Config::load
 
 def create_subversion_repository_and_checkout

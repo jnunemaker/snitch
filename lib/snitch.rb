@@ -1,4 +1,10 @@
-%w[uri yaml rubygems active_support mojombo-grit].each { |x| require x }
+%w[uri yaml rubygems].each { |x| require x }
+
+gem 'activesupport', '>= 1.3.1'
+require 'active_support'
+
+gem 'mojombo-grit', '>= 0.9.0'
+require 'grit'
 
 $: << File.join(File.dirname(__FILE__))
 
