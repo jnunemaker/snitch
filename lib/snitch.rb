@@ -1,6 +1,6 @@
 # This file simply includes the gems and snitch files needed.
 
-%w[uri yaml rubygems active_support].each { |x| require x }
+%w[uri yaml rubygems active_support mojombo-grit].each { |x| require x }
 
 require 'snitch/base'
 require 'snitch/config'

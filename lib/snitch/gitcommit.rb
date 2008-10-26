@@ -6,7 +6,6 @@ module Snitch
   #
   class GitCommit
     include Message
-    require 'mojombo-grit'
     
     attr_reader :repository
     
