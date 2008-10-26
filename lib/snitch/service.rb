@@ -1,43 +1,24 @@
-module Snitch
-  # Service is the base class for all services. All services should inherit from this class.
+class Snitch
   class Service
-    attr_reader :base, :attributes
+    attr_accessor :attributes
     
-    class << self
-      
-      # Set up the class instance attribute for the commit message length
-      attr_accessor :message_length      
-      
-      # Don't allow changing the commit message from outside the class
-      protected :message_length=
-      
-      # Handy for creating a new instance of a service from the config file. Simply pass in the service name and the attributes for the service and you get a new instance of the service.
-      #
-      #   Snitch::Service.new_from_name(:twitter, {:login => 'jnunemaker', :password => 'secret'})
-      #   # => #<Snitch::Services::Twitter:0x15a6508 @attributes={:login=>"jnunemaker", :password=>"secret"}>
-      def new_from_name(s, attributes)
-        service = "Snitch::Services::#{s.to_s.camelize}".constantize
-        service.new(attributes)
-      end
+    def self.new_from_name(s, attributes)
+      "Snitch::Services::#{s.to_s.camelize}".constantize.new(attributes)
     end
     
-    def initialize(attributes = {})
-      @attributes = attributes
+    def initialize(attributes)
+      self.attributes = default_options.merge(attributes || {}).symbolize_keys
     end
     
-    # Uses method missing to return the value of a key in the attributes hash.
-    # Allows for doing this...
-    #
-    #   service.login
-    #
-    # instead of this...
-    #
-    #   service.attributes[:login]
+    def default_options
+      { :message_length => :long }
+    end
+    
     def method_missing(method, *args, &block)
-      if method.to_s =~ /=$/
-        @attributes[method.to_s.chop] = args[0]
+      if attributes.include?(method)
+        attributes[method]
       else
-        attributes[method.to_s] || attributes[method] || super
+        super
       end
     end
   end

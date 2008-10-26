@@ -2,18 +2,13 @@ require 'snitch/service'
 require 'tmail'
 require 'net/smtp'
 
-module Snitch
+class Snitch
   module Services
     class Email < Service
-      
-      # Sets the prefferred commit message length to <tt>:long</tt>
-      self.message_length = :long
-
-      def initialize(*args)
-        super(*args)
+      def default_options
+        super.merge(:message_length => :superlong)
       end
       
-      # Sends the email
       def tattle(message)
         send_email(create_email(message))
       end

@@ -15,10 +15,24 @@ module Snitch
     end
     
     # Only show the first 7 digits of the yucky SHA hash
-    def revision; @commit.id_abbrev end
-    def author; @commit.author.to_s end
-    def project; @repository.description end
-    def message; " - #{@commit.message}" end
-    def affected; @affected ||= ' - ' + @commit.diffs.map(&:b_path).join("\n - ") end
+    def revision
+      @commit.id_abbrev 
+    end
+    
+    def author
+      @commit.author.to_s
+    end
+    
+    def project
+      @repository.description
+    end
+    
+    def message
+      " - #{@commit.message}"
+    end
+    
+    def affected
+      @affected ||= ' - ' + @commit.diffs.map(&:b_path).join("\n - ")
+    end
   end
 end

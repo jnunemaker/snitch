@@ -1,3 +1,38 @@
 #!/usr/bin/env ruby
-%w[rubygems snitch].each { |x| require x }
-Snitch::Base.new(ARGV[0], ARGV[1], ARGV[2]).tattle
+
+require 'optparse'
+
+options = {
+  :verbose => false,
+  :development => false,
+  :config_file => File.expand_path('~/.snitch'),  
+  :scm => :subversion,
+  :dry_run => false
+}
+
+op = OptionParser.new
+op.banner = "Usage: #{File.basename(__FILE__)} [options] repository_path revision"
+op.on('-h', '--help', "Display this help") { puts op; exit }
+op.on('-v', '--verbose', "Verbose mode") { options.verbose = true }
+op.on('-c', '--config FILE', "Configuration file to use, defaults to ~/.snitch") { |value| options[:config_file] = value }
+op.on('-d', '--development', "Development mode, runs from a directory") { options[:development] = true }
+op.on('--scm TYPE', [:git, :subversion], "Specifies source code manager: git or subversion(default)") { |value| options[:scm] = value }
+op.on('--dry-run', "Do everything but actually posting data") { options[:dry_run] = true }
+
+op.parse!(ARGV)
+
+require 'rubygems'
+
+if options[:development]
+  $: << File.join(File.dirname(__FILE__), '..', 'lib')
+end
+require 'snitch'
+
+repository_path, revision = ARGV
+
+unless repository_path && revision
+  puts op
+  exit(1)
+end
+
+Snitch.new(repository_path, revision, options).tattle

@@ -1,18 +1,22 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/../../test_helper'
 
-class GitCommitTest < Test::Unit::TestCase
+class GitTest < Test::Unit::TestCase
   def setup
     # Creates a test git repo locally and makes a test commit to it
-    `mkdir ./test-git.git && cd ./test-git.git && git init && touch test && git add test && git commit -m 'test'`
-    @gitcommit = Snitch::GitCommit.new('./test-git.git')
+    `mkdir ./test-git.git && cd ./test-git.git && git init && touch test && git add test && git commit -m 'Initial git import.'`
+    @gitcommit = Snitch::Revisions::Git.new('./test-git.git')
   end
   
   test 'should have a description' do
-    assert_match /^Unnamed repository/, @gitcommit.project
+    assert_match(/^Unnamed repository/, @gitcommit.project)
   end
-  
+
+  test 'should have diffs' do
+    assert @gitcommit.diffs
+  end
+
   test 'should have a message' do
-    assert_equal 'test', @gitcommit.message
+    assert_equal 'Initial git import.', @gitcommit.message
   end
   
   test 'should have a commit' do

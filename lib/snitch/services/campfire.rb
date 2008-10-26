@@ -1,26 +1,23 @@
 require 'tinder'
-module Snitch
+
+class Snitch
   module Services
-    # Allows for using tinder the unnofficial campfire api to paste a commit message into a campfire chatroom.
     class Campfire < Service
-      
-      # Sets the prefferred commit message length to <tt>:long</tt>
-      self.message_length = :long
-      
-      # Logs into campfire and enters the room in the config file.
-      def connection(force=false)
-        if @campfire.nil? || force
-          connection = ::Tinder::Campfire.new(subdomain)
-          connection.login(login, password)
-          raise ServiceLoginError, "Login to Campfire failed" unless connection.logged_in?
-          @campfire = connection.find_or_create_room_by_name(room)
-        end
-        @campfire
+      def connection
+        connection = ::Tinder::Campfire.new(subdomain)
+        connection.login(login, password)
+        connection.find_or_create_room_by_name(room)
       end
       
-      # Pastes a given message into a campfire room using the connection method.
+      def default_options
+        super.merge(:paste => true)
+      end
+      
       def tattle(message)
-        connection.paste(message)
+        # working around Tinder bug: see http://github.com/jqr/tinder/commit/5183567f060c991b7ed9c986b0594f8a53c2be63
+        speak_options = {}
+        speak_options[:paste] = true if paste
+        connection.speak(message, speak_options)
       end
     end
   end
